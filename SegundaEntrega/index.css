@@ -1,0 +1,75 @@
+* {
+  color: #fff;
+}
+body {
+  background-image: url('./assets/img/background.jpg');
+  background-repeat: none;
+  background-size: cover;
+}
+
+#header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+nav {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(80,78,78,.5);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+}
+.agregar-usuario {
+  display: flex;
+  align-items: center;
+}
+
+.agregar-usuario button {
+  margin-right: 10px;
+}
+
+.container-botones {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-resultado {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-libros {
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  margin-top: 5px;
+  margin: 20px 20px;
+}
+.container-libros .container-libros-agregados {
+  width: 100%;
+}
+#libros-agregados {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container-card-botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.modal-body {
+  display: block;
+}
+.container-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
