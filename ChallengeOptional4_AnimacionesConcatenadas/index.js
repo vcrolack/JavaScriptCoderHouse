@@ -78,10 +78,10 @@ $(document).ready(
           $('#credencial').remove();
           $('#btn-salir').remove();
           agregarUsuario();
-    
         }
       )
     }
+
     //render agregar usuario
     function agregarUsuario() {
       if (!localStorage.getItem('usuario')) {
@@ -96,12 +96,11 @@ $(document).ready(
                                       Agregar usuario
                                     </button>`
                                     );
-        $('#btn-crear-usuario').click(
-          function (e) {
-            $('#modal-agregar-usuario').fadeIn(5000);
-          }
-        );
       } 
-    } 
+    }
+    //animaciones con JQUERY
+    $('#main').prepend('<div id="subtitle" class="text-center my-5"> <h2>Tus lecturas </h2> </div>');
+    $('#subtitle').hide();
+    $('#subtitle').fadeIn(2000);
   }
 )
