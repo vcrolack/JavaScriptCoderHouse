@@ -82,7 +82,6 @@ $(document).ready(
         }
       )
     }
-
     //render agregar usuario
     function agregarUsuario() {
       if (!localStorage.getItem('usuario')) {
@@ -97,6 +96,11 @@ $(document).ready(
                                       Agregar usuario
                                     </button>`
                                     );
+        $('#btn-crear-usuario').click(
+          function (e) {
+            $('#modal-agregar-usuario').fadeIn(5000);
+          }
+        );
       } 
     } 
   }

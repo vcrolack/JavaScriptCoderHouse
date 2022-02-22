@@ -28,10 +28,11 @@ $(document).ready(
         e.preventDefault();
         const nombreUsuario = $('#nombre-usuario').val();
         const contrasena = $('#contrasena').val();
+        const libros = [];
 
         if (nombreUsuario.length > 3 && contrasena.length > 4) {
           usuarioId += 1;
-          const usuario = new Usuario(usuarioId, nombreUsuario, contrasena);
+          const usuario = new Usuario(usuarioId, nombreUsuario, contrasena, libros);
           localStorage.setItem('usuario', JSON.stringify(usuario));
           $('#modal-agregar-usuario').modal('toggle');
           $('#btn-crear-usuario').remove();
@@ -78,7 +79,6 @@ $(document).ready(
           $('#credencial').remove();
           $('#btn-salir').remove();
           agregarUsuario();
-    
         }
       )
     }
@@ -98,6 +98,10 @@ $(document).ready(
                                     </button>`
                                     );
       } 
-    } 
+    }
+    //animaciones con JQUERY
+    $('#main').prepend('<div id="subtitle" class="text-center my-5"> <h2>Tus lecturas </h2> </div>');
+    $('#subtitle').hide();
+    $('#subtitle').fadeIn(2000);
   }
 )

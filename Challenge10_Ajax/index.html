@@ -21,7 +21,7 @@
       </div>
     </nav>
   </header>
-  <section>
+  <section id="main">
     <div class="container-botones my-5">
       <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modal-agregar-libro">
         Agregar libro
@@ -77,7 +77,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Agregar Libro</button>
+              <button type="button" class="btn btn-primary">Agregar Libro</button>
             </div>
           </form>
           <div id="ui-error">
@@ -96,7 +96,7 @@
           <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="" id="agregar-usuario-form">
+          <form action="POST" id="agregar-usuario-form">
             <div class="container-input input-nombre-usuario">
               <label for="">Nombre de usuario</label>
               <input id="nombre-usuario" class="input text-dark" type="text">
@@ -105,9 +105,9 @@
               <label for="">Contraseña</label>
               <input id="contrasena" class="input text-dark" type="password">
             </div>
-            <div class="modal-footer">
+            <div id="footer-modal" class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </div>
           </form>
         </div>
@@ -115,6 +115,34 @@
     </div>
   </div>
   <!--/MODAL-AGREGAR-USUARIO-->
+    <!--MODAL-INICIAR-SESION-->
+    <div id="modal-iniciar-sesion" class="modal" tabindex="-1">
+      <div class="modal-dialog ">
+        <div class="modal-content bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title">INICIAR SESION</h5>
+            <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="iniciar-sesion-form">
+              <div class="container-input input-nombre-usuario">
+                <label for="">Nombre de usuario</label>
+                <input id="nombre-iniciar-sesion" class="input text-dark" type="text">
+              </div>
+              <div class="container-input input-contrasena">
+                <label for="">Contraseña</label>
+                <input id="contrasena-iniciar-sesion" class="input text-dark" type="password">
+              </div>
+              <div id="footer-modal" class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/MODAL-INICIAR-SESION-->
 
   <script type="module" src="./index.js"></script>
   <script type="module" src="./class/BibliotecaUI.js"></script>
