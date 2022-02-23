@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": 100,
+      "nombre": "Victor",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": [
+          {
+            "id": 100,
+            "nombre": "Percy Jackson I",
+            "autor": "Rick Riordan",
+            "paginas": 200,
+            "annio": 2010,
+            "leido": false
+          },
+          {
+            "id": 101,
+            "nombre": "El nombre del viento",
+            "autor": "Patrick Rothfuss",
+            "paginas": 1200,
+            "annio": 2013,
+            "leido": false
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "nombre": "rolack",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Rolack",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": [
+          {
+            "id": 1,
+            "nombre": "PERCY JACKSON",
+            "autor": "RICK",
+            "paginas": "222",
+            "annio": "2222",
+            "leido": false
+          },
+          {
+            "id": 1,
+            "nombre": "EL JUEGO INFINITO",
+            "autor": "RICK",
+            "paginas": "222",
+            "annio": "2222",
+            "leido": false
+          },
+          {
+            "id": 1,
+            "nombre": "ORGULLO Y PREJUICIO",
+            "autor": "JANE AUSTEN",
+            "paginas": "222",
+            "annio": "2022",
+            "leido": false
+          }
+        ]
+      }
+    }
+  ]
+}
