@@ -5,4 +5,9 @@ export class Usuario {
     this.contrasena = contrasena;
     this.biblioteca = biblioteca;
   }
+
+  obtenerUsuarios () {
+    fetch('http://localhost:3000/users')
+    .then(res => console.log(Response));
+  }
 }

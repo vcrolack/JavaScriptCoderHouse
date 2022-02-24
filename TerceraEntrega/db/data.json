@@ -51,7 +51,7 @@
             "leido": false
           },
           {
-            "id": 1,
+            "id": 2,
             "nombre": "EL JUEGO INFINITO",
             "autor": "RICK",
             "paginas": "222",
@@ -59,14 +59,84 @@
             "leido": false
           },
           {
-            "id": 1,
+            "id": 3,
+            "nombre": "PERCY JACKSON",
+            "autor": "RICK",
+            "paginas": "3232",
+            "annio": "323232",
+            "leido": false
+          },
+          {
+            "id": 4,
             "nombre": "ORGULLO Y PREJUICIO",
-            "autor": "JANE AUSTEN",
+            "autor": "23123",
+            "paginas": "12312",
+            "annio": "1323123",
+            "leido": false
+          },
+          {
+            "id": 5,
+            "nombre": "JUEGO INFINITO",
+            "autor": "RICK",
             "paginas": "222",
-            "annio": "2022",
+            "annio": "2222",
             "leido": false
           }
         ]
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Rolando",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "auri",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "auri1",
+      "contrasena": "2312312",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "auri2",
+      "contrasena": "312312",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "victor",
+      "contrasena": "123213",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "rolack12",
+      "contrasena": "12213123",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
       }
     }
   ]

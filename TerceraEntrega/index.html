@@ -96,7 +96,7 @@
           <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="POST" id="agregar-usuario-form">
+          <form action="" id="agregar-usuario-form">
             <div class="container-input input-nombre-usuario">
               <label for="">Nombre de usuario</label>
               <input id="nombre-usuario" class="input text-dark" type="text">
@@ -107,9 +107,13 @@
             </div>
             <div id="footer-modal" class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+              <button id="boton-agregar-usuario" type="button" class="btn btn-primary">Agregar usuario</button>
             </div>
           </form>
+          <div id="ui-error-agregar-usuario1">
+          </div>
+          <div id="ui-error-agregar-usuario2">
+          </div>
         </div>
       </div>
     </div>

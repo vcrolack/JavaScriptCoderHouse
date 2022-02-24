@@ -5,9 +5,35 @@ import { Usuario } from "./class/Usuario.js";
 $(document).ready(
   function () {
 
+
+    //errores
+    $('#ui-error-agregar-usuario1').append(
+      `<div class="alert alert-danger">
+        <p class="text-danger"> Ingrese bien los campos. El nombre y la contraseña debe de tener una longitud mayor a 3 caracteres.</p>
+      </div>`
+    )
+    $('#ui-error-agregar-usuario2').append(
+      `<div class="alert alert-danger">
+        <p class="text-danger"> El nombre de usuario no está disponible </p>
+      </div>`
+    )
+    $('#ui-error-agregar-usuario1').hide();
+    $('#ui-error-agregar-usuario2').hide();
+
+
     const bibliotecaPersonal = new Biblioteca(10);
-    //Creacion de la "interfaz grafica" de la aplicacion.
+
     let libroId = 0;
+    if (JSON.parse(localStorage.getItem('usuario'))) {
+      let usuario = JSON.parse(localStorage.getItem('usuario'));
+      if (usuario.biblioteca.libros) {
+        $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+          libroId = res.biblioteca.libros.length - 1 + 1
+          console.log(res.biblioteca.libros)
+      })
+      }
+
+    }
     let usuarioId = 0;
     $.getJSON("http://localhost:3000/users", function (res, sta) {
       usuarioId = res.length-1;
@@ -36,32 +62,49 @@ $(document).ready(
     )
 
     //Agregar usuario con jquery
-    $('#agregar-usuario-form').submit(
+    $('#boton-agregar-usuario').click(
       function(e) {
         e.preventDefault();
         const nombreUsuario = $('#nombre-usuario').val();
         const contrasena = $('#contrasena').val();
         const biblioteca = bibliotecaPersonal;
 
-        if (nombreUsuario.length > 3 && contrasena.length > 4) {
-          usuarioId += 1;
-          const usuario = new Usuario(usuarioId, nombreUsuario, contrasena, biblioteca);
-          console.log(usuario)
-          fetch("http://localhost:3000/users", {
-            method: 'POST',
-            body: JSON.stringify(usuario),
-            headers: {
-              'Content-Type': 'application/json'
+
+
+
+        if (nombreUsuario.length > 3 && contrasena > 3){
+          $.getJSON('http://localhost:3000/users', function (res, sta) {
+            if (sta === 'success') {
+              
+              if (res.find(element => element.nombre === nombreUsuario)) {
+                $('#ui-error-agregar-usuario2').show();
+                setTimeout(() => $('#ui-error-agregar-usuario2').hide(), 3000);
+              } else {
+                usuarioId += 1;
+                const usuario = new Usuario(usuarioId, nombreUsuario, contrasena, biblioteca);
+                console.log(usuario)
+                fetch("http://localhost:3000/users", {
+                  method: 'POST',
+                  body: JSON.stringify(usuario),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                  .then(() => {
+                    $('#modal-agregar-usuario').modal('toggle');
+                    localStorage.setItem('usuario', JSON.stringify(usuario));
+                    $('#btn-crear-usuario').remove();
+                    $('#btn-crear-usuario').remove();
+                    existeUsuario();
+                  })
+                  .catch(err => console.log(err))    
+              }
             }
-          })
-            .then(() => {
-              $('#modal-agregar-usuario').modal('toggle');
-              localStorage.setItem('usuario', JSON.stringify(usuario));
-              $('#btn-crear-usuario').remove();
-              $('#btn-crear-usuario').remove();
-              existeUsuario();
-            })
-            .catch(err => console.log(err))    
+  
+          });
+        } else {
+          $('#ui-error-agregar-usuario1').show();
+          setTimeout(() => $('#ui-error-agregar-usuario1').hide(), 3000);
         }
       })
 
