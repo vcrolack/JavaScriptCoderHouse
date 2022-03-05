@@ -138,6 +138,15 @@
         "capacidad": 10,
         "libros": []
       }
+    },
+    {
+      "id": 9,
+      "nombre": "Rolack2222",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 10,
+        "libros": []
+      }
     }
   ]
 }

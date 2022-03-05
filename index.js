@@ -5,7 +5,6 @@ import { Usuario } from "./class/Usuario.js";
 $(document).ready(
   function () {
 
-
     //errores
     $('#ui-error-agregar-usuario1').append(
       `<div class="alert alert-danger">
@@ -69,9 +68,6 @@ $(document).ready(
         const contrasena = $('#contrasena').val();
         const biblioteca = bibliotecaPersonal;
 
-
-
-
         if (nombreUsuario.length > 3 && contrasena > 3){
           $.getJSON('http://localhost:3000/users', function (res, sta) {
             if (sta === 'success') {
@@ -127,15 +123,6 @@ $(document).ready(
 
         bibliotecaPersonal.listaLibrosDOM();
 
-      }
-    }
-
-    //Renderizar lista de libros, si es que existe
-    let usuario = JSON.parse(localStorage.getItem('usuario'));
-    if (usuario) {
-      let librosStorage = usuario.biblioteca.libros;
-      if (librosStorage) {
-        mostrarLibrosGuardados();
       }
     }
 
@@ -201,6 +188,17 @@ $(document).ready(
         }
       })
     }
+
+    //Eliminar usuario
+    $('.btn-eliminar').click(
+      function (e) {
+        e.preventDefault();
+        let idCard = $(this).closest(".card").attr("id");
+        let usuario = JSON.parse(localStorage.getItem('usuario'));
+        // let idUsuario = usuario.id;
+        bibliotecaPersonal.eliminarLibro(usuario, idCard);
+      }
+    )
     //animaciones con JQUERY
     $('#main').prepend('<div id="subtitle" class="text-center my-5"> <h2>Tus lecturas </h2> </div>');
     $('#subtitle').hide();

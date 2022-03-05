@@ -52,8 +52,6 @@ export class Biblioteca {
   } 
 
   listaLibrosDOM(libro) {
-    let listaLibros = document.getElementById("libros-agregados");
-    listaLibros.innerHTML= '';
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let librosStorage = usuario.biblioteca.libros;
     let libros;
@@ -78,7 +76,7 @@ export class Biblioteca {
       }
 
       $('#libros-agregados').append(`
-        <div class="card bg-dark" style="width:18rem;">
+        <div class="card bg-dark" id=${libro.id} style="width:18rem;">
           <div class="card-body">
             <h5 class="card-title"> ${libro.nombre} </h5>
             <h6 class="card-subtitle"> Autor: ${libro.autor} </h6>
@@ -89,7 +87,7 @@ export class Biblioteca {
             </ul>
             <div class="d-flex justify-content-between">
               <button class="btn ${claseLeido}"> ${textoBoton} </button>
-              <button class="btn btn-danger"> Eliminar </button>
+              <button class="btn btn-danger btn-eliminar"> Eliminar </button>
             </div>
           </div>
         </div>
@@ -115,6 +113,34 @@ export class Biblioteca {
       </div>
       `);
     }
+  }
+
+  eliminarLibro (usuario, idLibro) {
+    let bibliotecaActualizada;
+    $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+      if (sta === 'success') {
+        let libros = res.biblioteca.libros;
+        bibliotecaActualizada = libros.filter(libro => libro.id != idLibro);
+        fetch(`http://localhost:3000/users/${usuario.id}`, {
+          method: 'PATCH',
+          headers: {'Content-Type': 'application/json; charset=UTF-8'},
+          body: JSON.stringify({
+            biblioteca: {
+              capacidad: usuario.biblioteca.capacidad,
+              libros: bibliotecaActualizada
+            }
+          }),
+        })
+          .then(res => {
+            $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+              if (sta === 'success') {
+                localStorage.setItem('usuario', JSON.stringify(res));
+              }
+            })
+          })
+          .catch(err => console.log(err))
+      }
+    })
   }
 
   limpiarDashboard () {
