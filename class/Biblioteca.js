@@ -33,8 +33,6 @@ export class Biblioteca {
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let idUsuario = usuario.id;
 
-
-
     fetch(`http://localhost:3000/users/${idUsuario}`, {
       method: 'PATCH',
       body: JSON.stringify({
@@ -55,12 +53,17 @@ export class Biblioteca {
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let librosStorage = usuario.biblioteca.libros;
     let libros;
+
     if (librosStorage) {
       libros = librosStorage
     } else {
       libros = this.libros;
     }
 
+    this.renderLibros(libros);
+  }
+
+  renderLibros(libros) {
     for (let libro of libros) {
       let leido;
       let claseLeido;
@@ -144,7 +147,6 @@ export class Biblioteca {
   }
 
   libroLeido(usuario, idLibro) {
-    let libreriaActualizada;
     $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
       if (sta === 'success') {
         let libros = res.biblioteca.libros;
@@ -176,6 +178,17 @@ export class Biblioteca {
           })
           .catch(err => console.log(err));
         console.log(libros)
+      }
+    })
+  }
+
+  librosLeidos(usuario, biblioteca) {
+    let libros;
+    $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+      if (sta === 'success') {
+        libros = res.biblioteca.libros;
+        libros = libros.filter(libro => libro.leido === true);
+        biblioteca.renderLibros(libros);
       }
     })
   }

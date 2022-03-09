@@ -208,6 +208,16 @@ $(document).ready(
         bibliotecaPersonal.libroLeido(usuario, idCard);
       }
     )
+
+    // Mostrar solo libros leidos
+    $('#leidos').click(
+      function (e) {
+        e.preventDefault();
+        bibliotecaPersonal.limpiarDashboard();
+        let usuario = JSON.parse(localStorage.getItem('usuario'));
+        bibliotecaPersonal.librosLeidos(usuario, bibliotecaPersonal);
+      }
+    )
     //animaciones con JQUERY
     $('#main').prepend('<div id="subtitle" class="text-center my-5"> <h2>Tus lecturas </h2> </div>');
     $('#subtitle').hide();
