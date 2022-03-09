@@ -52,8 +52,7 @@ $(document).ready(
 
     //Iniciar sesion
     $('#iniciar-sesion-form').submit(
-      function (e) {
-        e.preventDefault();
+      function (e) {       
         const nombreUsuario = $("#nombre-iniciar-sesion").val();
         const contrasena = $("#contrasena-iniciar-sesion").val();
         iniciarSesion(nombreUsuario, contrasena);
@@ -189,14 +188,24 @@ $(document).ready(
       })
     }
 
-    //Eliminar usuario
+    //Eliminar libro
     $('.btn-eliminar').click(
       function (e) {
         e.preventDefault();
         let idCard = $(this).closest(".card").attr("id");
         let usuario = JSON.parse(localStorage.getItem('usuario'));
-        // let idUsuario = usuario.id;
         bibliotecaPersonal.eliminarLibro(usuario, idCard);
+      }
+    )
+
+    //Cambiar estado de leído
+    $('.btn-change-status').click(
+      function (e) {
+        e.preventDefault();
+        let idCard = $(this).closest(".card").attr("id");
+        let usuario = JSON.parse(localStorage.getItem('usuario'));
+        console.log(usuario)
+        bibliotecaPersonal.libroLeido(usuario, idCard);
       }
     )
     //animaciones con JQUERY

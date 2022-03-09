@@ -86,7 +86,7 @@ export class Biblioteca {
               <li> Leído: ${leido} </li>
             </ul>
             <div class="d-flex justify-content-between">
-              <button class="btn ${claseLeido}"> ${textoBoton} </button>
+              <button class="btn ${claseLeido} btn-change-status"> ${textoBoton} </button>
               <button class="btn btn-danger btn-eliminar"> Eliminar </button>
             </div>
           </div>
@@ -139,6 +139,43 @@ export class Biblioteca {
             })
           })
           .catch(err => console.log(err))
+      }
+    })
+  }
+
+  libroLeido(usuario, idLibro) {
+    let libreriaActualizada;
+    $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+      if (sta === 'success') {
+        let libros = res.biblioteca.libros;
+        libros.map(libro => {
+          if (libro.id == idLibro) {
+            if(libro.leido) {
+              libro.leido = false;
+            } else {
+              libro.leido = true;
+            }
+          }
+        })
+        fetch(`http://localhost:3000/users/${usuario.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json; charset=UTF-8'},
+          body: JSON.stringify({
+            biblioteca: {
+              capacidad: usuario.biblioteca.capacidad,
+              libros: libros
+            }
+          })
+        })
+          .then(res => {
+            $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+              if (sta === 'success') {
+                localStorage.setItem('usuario', JSON.stringify(res));
+              }
+            })
+          })
+          .catch(err => console.log(err));
+        console.log(libros)
       }
     })
   }
