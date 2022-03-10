@@ -49,7 +49,7 @@ export class Biblioteca {
       .catch(err => console.log(err))
   } 
 
-  listaLibrosDOM(libro) {
+  listaLibrosDOM() {
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let librosStorage = usuario.biblioteca.libros;
     let libros;
@@ -193,8 +193,18 @@ export class Biblioteca {
     })
   }
 
+  librosNoLeidos(usuario, biblioteca) {
+    let libros;
+    $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
+      if (sta === 'success') {
+        libros = res.biblioteca.libros;
+        libros = libros.filter(libro => libro.leido != true);
+        biblioteca.renderLibros(libros);
+      }
+    })
+  }
+
   limpiarDashboard () {
     $('.card').remove();
   }
 }
-

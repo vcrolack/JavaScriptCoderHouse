@@ -11,13 +11,11 @@
 </head>
 <body>
   <header id="header">
-    <nav>
-
-      <div class="titulo py-4 ps-3">
+    <nav class="d-flex flex-wrap justify-content-lg-between justify-content-center">
+      <div class="titulo text-center py-4 ps-3">
         <h1>Biblioteca Personal</h1>
       </div>
-      <div id="autenticacion" class="agregar-usuario d-block pe-5 mt-2">
-        
+      <div id="autenticacion" class="agregar-usuario d-flex flex-column align-items-center justify-content-center me-md-4 mb-2">
       </div>
     </nav>
   </header>
@@ -26,15 +24,15 @@
       <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modal-agregar-libro">
         Agregar libro
       </button>
+      <button id="todos-libros" type="button" class="btn btn-secondary me-3">Todos</button>
       <button id="leidos" type="button" class="btn btn-secondary me-3">Leídos</button>
-      <button disabled type="button" class="btn btn-secondary me-3">No leídos</button>
-      <button disabled type="button" class="btn btn-secondary ">Todos</button>
+      <button id="no-leidos" type="button" class="btn btn-secondary">No leídos</button>
     </div>
     <h3 class="text-center">Libros agregados</h3>
     <div class="container-resultado">
       <div class="container-libros">
         <div class="container-libros-agregados">
-          <div id="libros-agregados">
+          <div id="libros-agregados" class="d-flex justify-content-center">
           </div>
         </div>
       </div>
@@ -45,9 +43,6 @@
       <h3>¡Organiza tus lecturas con nosotros!</h3>
     </div>
   </footer>
-
-
-
 
   <!--MODAL-AGREGAR-LIBRO-->
   <div id="modal-agregar-libro" class="modal" tabindex="-1">

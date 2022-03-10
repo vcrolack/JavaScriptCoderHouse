@@ -73,3 +73,9 @@ nav {
   flex-direction: column;
   margin-bottom: 25px;
 }
+
+@media (max-width: 644px) {
+  #header {
+    height: 200px;
+  }
+}

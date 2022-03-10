@@ -43,14 +43,6 @@
         "capacidad": 10,
         "libros": [
           {
-            "id": 1,
-            "nombre": "PERCY JACKSON",
-            "autor": "RICK",
-            "paginas": "222",
-            "annio": "2222",
-            "leido": true
-          },
-          {
             "id": 2,
             "nombre": "EL JUEGO INFINITO",
             "autor": "RICK",
@@ -64,7 +56,7 @@
             "autor": "RICK",
             "paginas": "3232",
             "annio": "323232",
-            "leido": false
+            "leido": true
           },
           {
             "id": 4,
@@ -72,7 +64,7 @@
             "autor": "23123",
             "paginas": "12312",
             "annio": "1323123",
-            "leido": false
+            "leido": true
           },
           {
             "id": 5,
@@ -80,6 +72,38 @@
             "autor": "RICK",
             "paginas": "222",
             "annio": "2222",
+            "leido": false
+          },
+          {
+            "id": 6,
+            "nombre": "COLMILLO BLANCO",
+            "autor": "JACK LONDON",
+            "paginas": "124",
+            "annio": "1975",
+            "leido": false
+          },
+          {
+            "id": 7,
+            "nombre": "LA PIRAMIDE ROJA",
+            "autor": "RICK RIORDAN",
+            "paginas": "350",
+            "annio": "2017",
+            "leido": false
+          },
+          {
+            "id": 8,
+            "nombre": "EL LLAMADO DE LA SELVA",
+            "autor": "JACK LONDON",
+            "paginas": "109",
+            "annio": "1967",
+            "leido": false
+          },
+          {
+            "id": 9,
+            "nombre": "EL TEMOR DE UN HOMBRE SABIO",
+            "autor": "PATRICK ROTHFUSS",
+            "paginas": "2100",
+            "annio": "2015",
             "leido": false
           }
         ]

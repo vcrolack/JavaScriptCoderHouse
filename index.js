@@ -148,7 +148,7 @@ $(document).ready(
         $('#autenticacion').append(`<button 
                                       id="btn-crear-usuario"
                                       type="button" 
-                                      class="btn btn-secondary" 
+                                      class="btn btn-secondary mt-2" 
                                       data-bs-toggle="modal" 
                                       data-bs-target="#modal-agregar-usuario"
                                     >
@@ -209,13 +209,30 @@ $(document).ready(
       }
     )
 
+    //Mostrar todos los libros
+    $('#todos-libros').click(
+      function (e) {
+        bibliotecaPersonal.limpiarDashboard();
+        let usuario = JSON.parse(localStorage.getItem('usuario'));
+        bibliotecaPersonal.listaLibrosDOM();
+      }
+    )
+
     // Mostrar solo libros leidos
     $('#leidos').click(
       function (e) {
-        e.preventDefault();
         bibliotecaPersonal.limpiarDashboard();
         let usuario = JSON.parse(localStorage.getItem('usuario'));
         bibliotecaPersonal.librosLeidos(usuario, bibliotecaPersonal);
+      }
+    )
+
+    //Mostrar solo libros no leidos
+    $('#no-leidos').click(
+      function (e) {
+        bibliotecaPersonal.limpiarDashboard();
+        let usuario = JSON.parse(localStorage.getItem('usuario'));
+        bibliotecaPersonal.librosNoLeidos(usuario, bibliotecaPersonal);
       }
     )
     //animaciones con JQUERY
