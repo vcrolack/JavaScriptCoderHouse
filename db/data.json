@@ -171,6 +171,24 @@
         "capacidad": 10,
         "libros": []
       }
+    },
+    {
+      "id": 10,
+      "nombre": "Pablo",
+      "contrasena": "12345",
+      "biblioteca": {
+        "capacidad": 20,
+        "libros": [
+          {
+            "id": 1,
+            "nombre": "PAPELUCHO Y MI AMIGO BORIC",
+            "autor": "MARCELA PAZ",
+            "paginas": "2012",
+            "annio": "1973",
+            "leido": true
+          }
+        ]
+      }
     }
   ]
 }

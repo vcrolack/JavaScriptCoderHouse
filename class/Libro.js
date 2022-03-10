@@ -7,9 +7,4 @@ export class Libro {
     this.annio = annio;
     this.leido = leido;
   }
-
-  verDetalle() {
-    alert(`DETALLE LIBRO\nNombre: ${this.nombre}\nAutor: ${this.autor}\nPáginas: ${this.paginas}\nAño: ${this.annio}`);
-  }
-
 }

@@ -10,21 +10,20 @@ export class Biblioteca {
     if (this.capacidad <= this.capacidad) {
       
       this.libros.push(libro);
-      console.log(this.libros);
+      
       let usuario = JSON.parse(localStorage.getItem('usuario'));
       usuario.biblioteca.libros.push(libro);
-      console.log(usuario)
-      localStorage.setItem('usuario', JSON.stringify(usuario));
-      console.log(localStorage.getItem('usuario'))
+      localStorage.setItem('usuario', JSON.stringify(usuario)); 
+      
+      //se actualizan los libros en el local storage
       let usuarioActualizado =  JSON.parse(localStorage.getItem('usuario'));
       let bibliotecaActualizada = usuarioActualizado.biblioteca.libros;
 
-      
       //funcion agregar a bd
       this.agregarBaseDatos(bibliotecaActualizada);
 
     } else {
-      alert('Ya no caben más libros.');
+      console.log('No caben más libros.')
     }
   }
 
@@ -32,7 +31,8 @@ export class Biblioteca {
 
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let idUsuario = usuario.id;
-
+    
+    //Se actualiza los libros del usuario con un PATCH
     fetch(`http://localhost:3000/users/${idUsuario}`, {
       method: 'PATCH',
       body: JSON.stringify({
@@ -49,15 +49,20 @@ export class Biblioteca {
       .catch(err => console.log(err))
   } 
 
+  //Todos los libros 
   listaLibrosDOM() {
     let usuario = JSON.parse(localStorage.getItem('usuario'));
     let librosStorage = usuario.biblioteca.libros;
     let libros;
 
     if (librosStorage) {
+
       libros = librosStorage
+
     } else {
+
       libros = this.libros;
+
     }
 
     this.renderLibros(libros);
@@ -68,14 +73,20 @@ export class Biblioteca {
       let leido;
       let claseLeido;
       let textoBoton;
+
+      // Se comprueba si el libro ha sido leído o no para pasar los estilos y el texto del botón
       if (libro.leido) {
+
         leido = 'Sí';
         claseLeido = 'btn-warning';
         textoBoton = 'No leído'
+
       } else {
+
         leido = 'No';
         claseLeido = 'btn-success';
         textoBoton = 'Leído';
+
       }
 
       $('#libros-agregados').append(`
@@ -120,10 +131,12 @@ export class Biblioteca {
 
   eliminarLibro (usuario, idLibro) {
     let bibliotecaActualizada;
+    // Se realiza un get para obtener al usuario primero, ya que queremos acceder a su biblioteca
     $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
       if (sta === 'success') {
         let libros = res.biblioteca.libros;
         bibliotecaActualizada = libros.filter(libro => libro.id != idLibro);
+        //realizamos un PATCH para actualizar la biblioteca del usuario para quitar el libro
         fetch(`http://localhost:3000/users/${usuario.id}`, {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json; charset=UTF-8'},
@@ -135,6 +148,7 @@ export class Biblioteca {
           }),
         })
           .then(res => {
+            //Se realiza este GET para actualizar los datos del local storage
             $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
               if (sta === 'success') {
                 localStorage.setItem('usuario', JSON.stringify(res));
@@ -147,18 +161,25 @@ export class Biblioteca {
   }
 
   libroLeido(usuario, idLibro) {
+    //Se realiza un GET para obtener el usuario 
     $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
       if (sta === 'success') {
+
         let libros = res.biblioteca.libros;
+
         libros.map(libro => {
           if (libro.id == idLibro) {
+
             if(libro.leido) {
               libro.leido = false;
             } else {
               libro.leido = true;
             }
           }
+
         })
+
+        //Se realiza un PATCH para actualizar la biblioteca con el libro leído o desmarcado como leído
         fetch(`http://localhost:3000/users/${usuario.id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json; charset=UTF-8'},
@@ -170,6 +191,7 @@ export class Biblioteca {
           })
         })
           .then(res => {
+            //Se realiza GET para actualizar el usuario del local storage
             $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
               if (sta === 'success') {
                 localStorage.setItem('usuario', JSON.stringify(res));
@@ -177,24 +199,33 @@ export class Biblioteca {
             })
           })
           .catch(err => console.log(err));
-        console.log(libros)
       }
     })
   }
 
+  //Filtro para mostrar los libros leídos
   librosLeidos(usuario, biblioteca) {
     let libros;
+
+    /*Se realiza un GET para obtener la biblioteca del usuario y filtrar
+     si el estado de leído es igual a true y mostrarlo en el dashboard */
     $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
       if (sta === 'success') {
+
         libros = res.biblioteca.libros;
         libros = libros.filter(libro => libro.leido === true);
         biblioteca.renderLibros(libros);
+
       }
     })
   }
 
+  //Filtro para mostrar los libros no leídos 
   librosNoLeidos(usuario, biblioteca) {
     let libros;
+    
+    /* Se realiza un GET para obtener la biblioteca del usuario y filtrar
+    si el estado de leído es distinto a true y mostrarlo en el dashboard */
     $.getJSON(`http://localhost:3000/users/${usuario.id}`, function (res, sta) {
       if (sta === 'success') {
         libros = res.biblioteca.libros;
@@ -204,6 +235,7 @@ export class Biblioteca {
     })
   }
 
+  //Remueve todas las cards del dashboard
   limpiarDashboard () {
     $('.card').remove();
   }
