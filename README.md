@@ -46,4 +46,4 @@ Se optó incorporar esta dependencia por la imposibilidad de realizar un post al
     Con esta URL se realizan las peticiones a la api simulada, permitiendo realizar post y patch.
 
 ## Agradecimientos
-Finalizando el presente documento, agradecer a la profesora Natalia por su paciencia y vocación al enseñanza, pues, cada clase ha sido de provecho. También agradecer a mi tutor Rodrigo quien me dio feedback, ayuda en mis entregas y palabras de ánimos para seguir en este mundo del desarrollo. Muchas gracias.
+Finalizando el presente documento, agradecer a la profesora Natalia por su paciencia y vocación por la enseñanza, pues, cada clase ha sido de provecho. También agradecer a mi tutor Rodrigo quien me dio feedback, ayuda en mis entregas y palabras de ánimos para seguir en este mundo del desarrollo. Muchas gracias.
