@@ -144,6 +144,7 @@ $(document).ready(
     //Mostrar todos los libros
     $('#todos-libros').click(
       function (e) {
+        location.reload();
         bibliotecaPersonal.limpiarDashboard();
         let usuario = JSON.parse(localStorage.getItem('usuario'));
         bibliotecaPersonal.listaLibrosDOM();

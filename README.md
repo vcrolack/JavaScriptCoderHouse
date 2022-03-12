@@ -6,7 +6,7 @@ El objetivo principal de la aplicación desarrollada es la correcta organizació
 Para ello se ha desarrollado una aplicación con las siguientes tecnologías:
   1. HTML5
   2. CSS3
-  3. Bootstap
+  3. Bootstrap
   4. Javascript
   5. JQuery
   6. Json-server
@@ -47,3 +47,9 @@ Se optó incorporar esta dependencia por la imposibilidad de realizar un post al
 
 ## Agradecimientos
 Finalizando el presente documento, agradecer a la profesora Natalia por su paciencia y vocación por la enseñanza, pues, cada clase ha sido de provecho. También agradecer a mi tutor Rodrigo quien me dio feedback, ayuda en mis entregas y palabras de ánimos para seguir en este mundo del desarrollo. Muchas gracias.
+
+## Anexo
+Dejo una cuenta de la aplicación más a mano que ya tiene varios libros por si se necesita:
+
+      Usuario: Rolack
+      Pass: 12345
